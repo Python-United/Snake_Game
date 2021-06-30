@@ -28,6 +28,11 @@
 5- As a user, I want to hear game sound clearly without any issue.
 6- As a user, I want to see an intro when run the game.
 
+
+## Software Requirements
+
+[Software Requirements](requirements.md)
+
 ## Management Tools
 
 [Trello](https://trello.com/b/WAZqIPXi/snake)
