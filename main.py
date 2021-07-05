@@ -275,6 +275,19 @@ class MAIN:
         rules_rect = rules_surface.get_rect(center=(rules_x, rules_y))
         screen.blit(rules_surface, rules_rect)
 
+        if not mute:
+            muteimg = pygame.image.load('Graphics/unmute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (25, 25))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+        if mute:
+            muteimg = pygame.image.load('Graphics/mute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (21, 21))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+
+
+
 
 
 
@@ -464,6 +477,17 @@ class MAIN:
         home_rect = home_surface.get_rect(center=(score_x, score_y))
         screen.blit(home_surface, home_rect)
 
+        if not mute:
+            muteimg = pygame.image.load('Graphics/unmute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (25, 25))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+        if mute:
+            muteimg = pygame.image.load('Graphics/mute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (21, 21))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+
     def draw_grass(self):
         number=[1,2,3,4,5,6,7,8,9,10,11]
         background_number = number[pn]
@@ -474,6 +498,16 @@ class MAIN:
         s = pygame.Surface((20*40, cell_size * 2), pygame.SRCALPHA)
         s.fill((0, 0, 0, 128))
         screen.blit(s, (0, 0))
+        if not mute:
+            muteimg = pygame.image.load('Graphics/unmute_game.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (25, 25))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+        if mute:
+            muteimg = pygame.image.load('Graphics/mute_game.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (21, 21))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
 
     def draw_score(self):
         if len(self.snake.body)==3:
@@ -571,6 +605,17 @@ class MAIN:
         score_y = int(35.2 * cell_number)
         home_rect = home_surface.get_rect(center=(score_x, score_y))
         screen.blit(home_surface, home_rect)
+
+        if not mute:
+            muteimg = pygame.image.load('Graphics/unmute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (25, 25))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+        if mute:
+            muteimg = pygame.image.load('Graphics/mute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (21, 21))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
 
 
 
@@ -701,6 +746,17 @@ class MAIN:
         point_rect = point_surface.get_rect(center=(score_x, score_y))
         screen.blit(point_surface, point_rect)
 
+        if not mute:
+            muteimg = pygame.image.load('Graphics/unmute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (25, 25))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+        if mute:
+            muteimg = pygame.image.load('Graphics/mute_menu.png').convert_alpha()
+            muteimg = pygame.transform.scale(muteimg, (21, 21))
+            muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
+            screen.blit(muteimg, muteimg_rect)
+
 
 
 
@@ -724,6 +780,7 @@ game_font = pygame.font.Font('Font/Astral Groove.ttf', 20)
 rules_font = pygame.font.Font('Font/Astral Groove.ttf', 10)
 point_font = pygame.font.Font('Font/Space Rave.ttf', 30)
 
+mute=False
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 SCREEN_UPDATE2 = pygame.USEREVENT+1
@@ -735,13 +792,13 @@ playlist = list()
 playlist.append('Sound/Play_ground3.mp3')
 playlist.append('Sound/Play_ground.mp3')
 playlist.append('Sound/Play_ground2.mp3')
-
+volumebackgounf=0.2
 def sound_background(flag,page):
     global  stop_reassgin_background_music
     if flag != stop_reassgin_background_music and page=='main_minue':
         pygame.mixer.music.load('Sound/StartWindow.wav')
         pygame.mixer.music.play(-1, 0)
-        pygame.mixer.music.set_volume(0.2)
+        pygame.mixer.music.set_volume(volumebackgounf)
         stop_reassgin_background_music=flag
     elif flag != stop_reassgin_background_music and page=='play_ground':
         stop_reassgin_background_music = flag
@@ -760,6 +817,7 @@ def sound_background(flag,page):
 
 
 while True:
+    mousePosition = pygame.mouse.get_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -797,6 +855,19 @@ while True:
                 if event.key == pygame.K_LEFT:
                     if main_game.snake.direction.x != 1:
                         main_game.snake.direction = Vector2(-1, 0)
+            if event.type == MOUSEBUTTONDOWN:
+
+                if event.button == 1 and mute == False:
+                    if 754 <= mousePosition[0] <= 785 and 9 <= mousePosition[1] <= 34:
+                        volumebackgounf = 0
+                        pygame.mixer.music.set_volume(volumebackgounf)
+                        mute = True
+                elif event.button == 1 and mute == True:
+                    if 754 <= mousePosition[0] <= 785 and 9 <= mousePosition[1] <= 34:
+                        volumebackgounf = 0.2
+                        pygame.mixer.music.set_volume(volumebackgounf)
+                        mute = False
+
         else:
             mousePosition = pygame.mouse.get_pos()
             if main_game.main_minue_dialog == 1 :
@@ -839,6 +910,18 @@ while True:
                     elif 313<=mousePosition[0]<=509 and 563<=mousePosition[1]<=654:
                         main_game.main_minue_dialog = 0
                         main_game.play=True
+
+                if event.button == 1 and mute == False:
+                    if 754 <= mousePosition[0] <= 785 and 9 <= mousePosition[1] <= 34:
+                        volumebackgounf = 0
+                        pygame.mixer.music.set_volume(volumebackgounf)
+                        mute = True
+                elif event.button == 1 and mute == True:
+                    if 754 <= mousePosition[0] <= 785 and 9 <= mousePosition[1] <= 34:
+                        volumebackgounf=0.2
+                        pygame.mixer.music.set_volume(volumebackgounf)
+                        mute = False
+
 
 
 
