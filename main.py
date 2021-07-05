@@ -320,9 +320,9 @@ class MAIN:
         if self.fruit.pos == self.snake.body[0]:
             if self.fruit.fruit == 'banana.png':
                 global score
-                score += 10
+                score += 100
             else:
-                score += 5
+                score += 100
                 self.snake.add_block()
             self.fruit.randomize()
             self.snake.play_crunch_sound()
@@ -559,6 +559,18 @@ class MAIN:
         button_setting = pygame.transform.scale(button_setting, (200, 100))
         logo_rect_button_setting = pygame.Rect(int(cell_size * (cell_number-12.2)), int(cell_size * (cell_number-6)), 50,50)
         screen.blit(button_setting, logo_rect_button_setting)
+
+        back = pygame.image.load('Graphics/back.png').convert_alpha()
+        back = pygame.transform.scale(back, (50, 50))
+        back_rect = pygame.Rect(int(2 * cell_size), int(17 * cell_size), cell_size, cell_size)
+        screen.blit(back, back_rect)
+
+        home_text = str('HOME').upper()
+        home_surface = rules_font.render(home_text, True, (255, 164, 94))
+        score_x = int(4.3 * cell_size)
+        score_y = int(35.2 * cell_number)
+        home_rect = home_surface.get_rect(center=(score_x, score_y))
+        screen.blit(home_surface, home_rect)
 
 
 
@@ -820,7 +832,7 @@ while True:
                 elif event.button == 1 and main_game.main_minue_dialog == 4:
                     if 71 <= mousePosition[0] <= 130 and 682 <= mousePosition[1] <= 731:
                         main_game.main_minue_dialog = 1
-                elif event.button == 1 and main_game.main_minue_dialog == 3:
+                elif event.button == 1 and (main_game.main_minue_dialog == 3 or main_game.main_minue_dialog == 2):
 
                     if 71 <= mousePosition[0] <= 130 and 682 <= mousePosition[1] <= 731:
                         main_game.main_minue_dialog = 1
