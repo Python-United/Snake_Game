@@ -320,9 +320,9 @@ class MAIN:
         if self.fruit.pos == self.snake.body[0]:
             if self.fruit.fruit == 'banana.png':
                 global score
-                score += 100
+                score += 10
             else:
-                score += 100
+                score += 5
                 self.snake.add_block()
             self.fruit.randomize()
             self.snake.play_crunch_sound()
