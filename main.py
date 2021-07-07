@@ -2,6 +2,8 @@ import pygame, sys, random
 from pygame.math import Vector2
 from pygame.locals import *
 import moviepy.editor as mp
+from agent import *
+
 
 class SNAKE:
     def __init__(self):
@@ -286,7 +288,10 @@ class MAIN:
             muteimg_rect = pygame.Rect(int(19 * cell_size), int(0.2 * cell_size), cell_size, cell_size)
             screen.blit(muteimg, muteimg_rect)
 
-
+        ai = pygame.image.load('Graphics/ai.png').convert_alpha()
+        ai = pygame.transform.scale(ai, (50, 50))
+        ai_rect = pygame.Rect(int(cell_size * 9.5), int(cell_size * 18), 50,50)
+        screen.blit(ai, ai_rect)
 
 
 
@@ -333,9 +338,9 @@ class MAIN:
         if self.fruit.pos == self.snake.body[0]:
             if self.fruit.fruit == 'banana.png':
                 global score
-                score += 10
+                score += 30
             else:
-                score += 5
+                score += 20
                 self.snake.add_block()
             self.fruit.randomize()
             self.snake.play_crunch_sound()
@@ -891,6 +896,7 @@ while True:
                     pygame.mouse.set_cursor(*pygame.cursors.diamond)
 
 
+
             if event.type == MOUSEBUTTONDOWN:
 
                 if event.button == 1 and main_game.main_minue_dialog == 1:
@@ -899,6 +905,10 @@ while True:
                         main_game.play=True
                     elif 371<=mousePosition[0]<=445 and 462<=mousePosition[1]<=509 and main_game.main_minue_dialog == 1:
                         main_game.main_minue_dialog = 4
+                    elif 378<=mousePosition[0]<=429 and 722<=mousePosition[1]<=767 and main_game.main_minue_dialog == 1:
+                        main_game.main_minue_dialog = 4
+                        train()
+
 
                 elif event.button == 1 and main_game.main_minue_dialog == 4:
                     if 71 <= mousePosition[0] <= 130 and 682 <= mousePosition[1] <= 731:
@@ -906,6 +916,9 @@ while True:
                 elif event.button == 1 and (main_game.main_minue_dialog == 3 or main_game.main_minue_dialog == 2):
 
                     if 71 <= mousePosition[0] <= 130 and 682 <= mousePosition[1] <= 731:
+
+                        sound_background(False,'main_minue')
+
                         main_game.main_minue_dialog = 1
                     elif 313<=mousePosition[0]<=509 and 563<=mousePosition[1]<=654:
                         main_game.main_minue_dialog = 0
