@@ -45,7 +45,14 @@
 ![Snake_Game](/assets/uml.png)
 
 
-# Using a Database? Make an Database Schema Diagram
+# Using a Database? Make a Database Schema Diagram
 
 **We do not require for our project**
 
+
+
+# Resources 
+
+[Tutorial for snake game](https://www.youtube.com/watch?v=QFvqStqPCRU)
+
+[Tutorial for deep learning](https://www.youtube.com/watch?v=PJl4iabBEz0&list=RDCMUCbXgNpp0jedKWcQiULLbDTA&index=1)
