@@ -8,6 +8,17 @@
 3. Ebrahim Ayyad
 4. Suhib Kharoush
 
+## Running The Game
+1. Open the project by PyCharm
+2. Add this packages :
+    * pygame
+    * wheel
+    * torch
+    * matplotlib
+    * ipython
+    * agent
+3. Go to the main.py file right click and choose run main
+4. Enjoy it :)
 
 ## Game Description
 
