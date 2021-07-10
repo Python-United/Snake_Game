@@ -6,21 +6,21 @@ import numpy as np
 
 pygame.init()
 pygame.mixer.pre_init(44100, -16, 2, 512)
-playlist = list()
-playlist.append('Sound/Play_ground3.mp3')
-playlist.append('Sound/Play_ground.mp3')
-playlist.append('Sound/Play_ground2.mp3')
+# playlist = list()
+# playlist.append('Sound/Play_ground3.mp3')
+# playlist.append('Sound/Play_ground.mp3')
+# playlist.append('Sound/Play_ground2.mp3')
 
 
 snake_color_list=['blue','black','grey','green','light-blue','orange','red','yellow','purple','brown','brown']
 
 snake_color = snake_color_list[0]
-
-pygame.mixer.music.load(playlist[0])
-pygame.mixer.music.queue(playlist[1])
-pygame.mixer.music.set_endevent(pygame.USEREVENT)
-pygame.mixer.music.play()
-pygame.mixer.music.set_volume(.1)
+#
+# pygame.mixer.music.load(playlist[0])
+# pygame.mixer.music.queue(playlist[1])
+# pygame.mixer.music.set_endevent(pygame.USEREVENT)
+# pygame.mixer.music.play()
+# pygame.mixer.music.set_volume(.1)
 font = pygame.font.Font('Font/Astral Groove.ttf', 25)
 #font = pygame.font.SysFont('arial', 25)
 
